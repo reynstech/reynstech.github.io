@@ -45,18 +45,18 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <form method="POST" action="#">
+                <form id="whatsappForm">
                     <div class="mb-3">
                         <label class="form-label">Your Name</label>
-                        <input type="text" class="form-control" name="name" required>
+                        <input type="text" class="form-control" id="name" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Your Email</label>
-                        <input type="email" class="form-control" name="email" required>
+                        <input type="email" class="form-control" id="email" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Message</label>
-                        <textarea class="form-control" name="message" rows="5" required></textarea>
+                        <textarea class="form-control" id="message" rows="5" required></textarea>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Send Message</button>
@@ -88,6 +88,11 @@
                     <h6 class="fw-bold">Contact</h6>
                     <p><i class="fas fa-map-marker-alt me-2"></i> India | reynstechnologysolutions@gmail.com</p>
                     <p><i class="fas fa-phone me-2"></i> +91 73822 43320</p>
+                    <p><a href="https://wa.me/917382243320?text=Hi%20REYNS,%20I'm%20interested%20in%20your%20software%20solutions."
+                            class="btn btn-success" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+                        </a>
+                    </p>
                 </div>
                 <div class="col-lg-3 col-md-6 text-lg-end text-md-start">
                     <h6 class="fw-bold">Follow Us</h6>
@@ -122,6 +127,20 @@
             } else {
                 backToTop.style.display = 'none';
             }
+        });
+
+        document.getElementById('whatsappForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            const fullMessage = `Hello REYNS,%0AName: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+
+            const phone = "917382243320"; // Replace with your WhatsApp number
+
+            window.open(`https://wa.me/${phone}?text=${fullMessage}`, '_blank');
         });
     </script>
 
